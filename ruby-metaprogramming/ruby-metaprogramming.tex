@@ -1,0 +1,90 @@
+\documentclass{beamer}
+
+\usepackage{beamerthemesplit}
+
+\title{Ruby Reflection}
+\author{Ryan Mulligan}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\frame{
+	\frametitle{What is metaprogramming?}
+  
+    Wikipedia: "Metaprogramming is the writing of computer programs that write or manipulate other programs (or themselves) as their data"
+}
+
+\frame{
+	\frametitle{What is reflection?}
+  
+    Wikipedia: "The process by which a computer program can observe and modify its own structure and behavior at runtime."
+}
+
+\frame{
+	\frametitle{Big picture}
+  
+    The full power of Ruby is available at almost any context.
+}
+
+\frame{
+	\frametitle{Basics}
+
+	\begin{description}
+	\item[self] Default Object
+	\item[.class] Class of an object
+	\item[.methods] Methods of an object
+	\item[.instance\_variables]
+	\item[.class\_variables]
+	\item[Singleton Class] a = Array.new; def a.size; puts "hello world";end;a.size
+	\end{description}
+}
+
+\frame{
+	\frametitle{Evals}
+
+	\begin{description}
+	\item[eval] Interpret a string of Ruby code
+	\item[instance\_eval] Changes self for a block
+	\item[class\_eval] equivalent to class C; block...; end;
+	\end{description}
+
+}
+
+\frame{
+	\frametitle{Gets/Sets/Sends}
+
+	\begin{description}
+	\item[instance\_variable\_get/set] a.instance\_variable\_set :@variable, value
+	\item[class\_variable\_get/set]
+	\item[const\_get/set] Array.const\_set :A, "hallow" Array::A
+	\item[send] a.send :method\_name, args
+	\end{description}
+}
+
+\frame{
+	\frametitle{Methods}
+
+	\begin{description}
+	\item[Class\#remove\_method]
+	\item[undef] opposite of def
+	\item[method\_missing] Catchall
+	\end{description}
+}
+
+\frame{
+	\frametitle{BasicObject}
+
+    New in 1.9. BasicObjet: an Object with no methods, class, or instance variables.
+}
+
+\frame {\frametitle{Exercises}
+
+       http://ruby-metaprogramming.rubylearning.com/html/
+}
+
+\frame {\frametitle{Questions} Questions}
+
+\end{document}
+

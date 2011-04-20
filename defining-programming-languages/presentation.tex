@@ -1,0 +1,163 @@
+\documentclass{beamer}
+
+\usepackage{beamerthemesplit}
+
+\title{Specifying Programming Languages}
+\author{Ryan Mulligan}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section[Outline]{}
+\frame{
+	\tableofcontents
+}
+
+\frame{
+	\frametitle{Formal Definitions}
+  
+	A formal programming language definition allows you to reason mathematically---or formally---about your programming language. 
+	In other words, formal definitions let you obtain a proof that goes from your program to a result.
+}
+
+\frame{
+	\frametitle{Definitions}
+
+	\begin{description}
+	\item[Syntax] What the program looks like. Usually defined with a context free grammar.
+	\item[Semantics] The meaning behind the syntax.
+	\item[Specification] The syntax and semantics of a certain domain.
+	\item[Program] An object valid under its intended syntax.
+	\end{description}
+}
+
+\section{Uses}
+\frame{
+	\frametitle{Uses}
+
+	\begin{itemize}
+	\item Correctness
+	\item Executable
+	\item Deeper Understanding
+	\end{itemize}
+}
+
+\subsection{Correctness}
+\frame{
+	\frametitle{Correctness}
+	how a program behaves with respect to some specification
+	\begin{itemize}
+	\item partial
+	\item total (Halt?)
+	\end{itemize}
+}
+
+\subsection{Execution}
+\frame{
+	\frametitle{Execution}
+	If your specification is written in the right way you can get an executable implementation for free. (K does this using Maude)
+
+	Example: Maude and Piano Numbers
+}
+
+\begin{frame}[fragile]
+	\frametitle{Maude's Grand Piano}
+	Declarative and Executable
+\begin{verbatim}
+mod NAT is
+  *** Syntax
+  sort Nat .
+  op 0 : -> Nat [ctor] .  
+  op s : Nat -> Nat [ctor] .  
+  op _+_ : Nat Nat -> Nat .
+  *** Semantics
+  vars N M : Nat .  
+  eq 0 + s(N) = s(N) .  eq s(N) + M = s (N + M) .
+endm
+\end{verbatim}
+\end{frame}
+
+\subsection{Understanding}
+\begin{frame}
+	\frametitle{Understanding}
+	If you specify a system you will be forced to have a deep understanding of it. Easier
+	\begin{itemize}
+	\item Implementation
+	\item Debugging
+	\end{itemize}
+	and you can sleep at night, maybe...
+\end{frame}
+
+\section{Operational Semantics}
+\frame{
+  \huge{Structural Operational Semantics (SOS)}
+}
+\subsection{My Language}
+\frame{
+	\frametitle{A Simple Language}
+	My programs are statements that store the result of arithmetic expressions into variables and it returns a variable.
+	\begin{description}
+	\item[$\sigma$] store
+	\item[$a$] arithmetic expression
+	\item[$i$] integer
+	\item[$x$] a variable
+	\end{description}
+	Challenge: Write the BNF for this language. (If time.)
+}
+
+\subsection{Big Step}
+\frame{
+  \frametitle{Big Step SOS}
+	A big step moves the program (P) from one state to another.
+
+	$\frac{\langle a1, \sigma \rangle \Downarrow \langle i1 \rangle, \langle a2, \sigma \rangle \Downarrow \langle i2 \rangle }{ \langle a1 + a2, \sigma \rangle \Downarrow \langle i \rangle }$ where i is the sum of i1 and i2
+
+	Challenge: Write rule for multiplication, division.
+}
+
+\subsection{Small Step}
+\frame{
+  \frametitle{Small Step SOS}
+  A small step moves encapsulates a single computation.
+
+  $\frac{\langle a1 , \sigma \rangle \longrightarrow \langle a1^\prime , \sigma \rangle }{ \langle a1 + a2 , \sigma \rangle \longrightarrow \langle a1^\prime + a2 , \sigma \rangle }$
+
+	Challenge: What else do we need for Plus.
+
+}
+
+\section{Better Stuff}
+\subsection{K}
+
+\frame{
+	\frametitle{K}
+	$AExp, Statement, Program \leq K$\\
+	$Int \leq KResult$\\
+	$Config ::= Int | Program | state(State)$\\
+	$K ::= K | K \curvearrowright K$
+}
+
+\frame{
+	\frametitle{Operator Definitions}
+	$\_ + \_ [strict\ extends +_Int ]$\\
+  $ a1 + a2 \rightleftharpoons a1 \curvearrowright \Box + a2 $
+}
+
+\frame{
+	\frametitle{Variables}
+	$k(\frac{x}{\sigma[x]} \rangle state(\sigma)$\\
+	$k(\frac{x:=i}{.} \rangle state(\frac{\sigma}{\sigma[x \leftarrow i]})$
+}
+
+
+\frame{
+  \frametitle{Further}
+	\begin{itemize}
+	\item Come to SIGPLan
+	\item Maude?
+	\end{itemize}
+}
+\end{document}
+    

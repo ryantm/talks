@@ -349,14 +349,26 @@ this mechanical substitution computation.
 
 ---
 
-# Questions
+# Comparing to Javascript
+
+```javascript
+function f(x) { console.log(x); return x + 1; }
+
+const array = [ f(1), f(2), f(3) ];             // prints to console
+
+const g = f
+
+g(1)n
+
+function h(x) { return () => f(x); }
+
+const array = [ h(1), h(2), h(3) ];             // does not print
+for (var i = 0; i < array.length; i++) {
+    array();                                    // now it prints
+}
+
+```
 
 ---
 
-# In Javascript
-
-```
-function f(x) { console.log(x); return x + 1; }
-const array = [ f(1), f(2), f(3) ];             // prints to console unexpectedly
-console.log(array)
-```
+# Questions

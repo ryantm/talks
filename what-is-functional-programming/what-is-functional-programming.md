@@ -99,8 +99,7 @@ Consider this Javascript:
 
 ```javascript
 const x = 4
-
-function f(y) { return y + y; }
+const f = y => y + y
 console.log(f(x))
 console.log(f(x + 1))
 ```
@@ -138,7 +137,7 @@ Consider this Javascript, now with assignments:
 
 ```javascript
 var x = 4
-function f(y) { return y + y; }
+const f = y => y + y
 x = x + 1
 console.log(f(x))
 x = x + 1
@@ -198,10 +197,12 @@ console.log(6 + 6)             // 12
 What will happen in this example?
 
 ```javascript
-var x = 4
-function f(y) { return y + y; }
-console.log(f(x++))
-console.log(f(x++))
+var x = 4              // x = 4
+const f = y => y + y
+console.log(f(x++))    // 8
+                       // x = 5
+console.log(f(x++))    // 10
+                       // x = 6
 ```
 
 ---
@@ -267,19 +268,12 @@ getChar :: IO Char
 You don't have side effects in your program, your program builds up an
 IO data type that gets passed to the Haskell runtime.
 
-
----
-
-# Javascript IO side effect example
-
-
-
 ---
 
 # Haskell IO example
 
 - `main` hands an IO type to the runtime
-- prints "haha" when executed by runtime
+- prints "aaa" when executed by runtime
 
 ```haskell
 import Control.Monad
@@ -358,7 +352,7 @@ const array = [ f(1), f(2), f(3) ];             // prints to console
 
 const g = f
 
-g(1)n
+g(1)
 
 function h(x) { return () => f(x); }
 

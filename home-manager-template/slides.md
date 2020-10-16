@@ -16,8 +16,8 @@ https://github.com/ryantm/home-manager-template
 
 # Why home-manager?
 
-* Investment in velocity
-* Leverage common configuration ecosystem
+* Reproduce your config instantly on new computers
+* Leverage common configuration ecosystem (less duplicate work)
 
 ---
 
@@ -26,13 +26,14 @@ https://github.com/ryantm/home-manager-template
 * Organize $HOME with NixOS-like configuration
 * home.nix ≅ configuration.nix
 * `home-manager switch` ≅ `nixos-rebuild switch`
+* Does not require NixOS (works on Linux)
 
 ---
 
 # Who is home-manager template for?
 
 * Allergic to installation instructions
-* Allergic to state
+* Don't like state
 * Maximum reproducibility!
 
 ---

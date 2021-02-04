@@ -92,6 +92,8 @@ $ cowsay "hello nixcon 2020"
 
 # Questions
 
+Thank you to all the organizers and attendees.
+
 |             |                                                                             |
 |-------------+-----------------------------------------------------------------------------|
 |template     | https://github.com/ryantm/home-manager-template                             |
